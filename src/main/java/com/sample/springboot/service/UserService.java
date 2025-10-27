@@ -1,8 +1,10 @@
 package com.sample.springboot.service;
 
+import com.sample.springboot.document.MongoUser;
 import com.sample.springboot.entity.User;
 import com.sample.springboot.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -23,7 +25,7 @@ public class UserService {
             return userRepository.save(user);
         }
 
-        public User updateUser(Long id, User updatedUser) {
+    public User updateUser(Long id, User updatedUser) {
             return userRepository.findById(id)
                     .map(existing -> {
                         existing.setName(updatedUser.getName());
